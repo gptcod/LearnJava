@@ -4,7 +4,7 @@ static class FastScanner {
 
 	public FastScanner(InputStream stream) {
 		try {
-			br = new BufferedStream(new InputReaderStream(stream));
+			br = new BufferedReader(new InputStreamReader(stream));
 
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -25,6 +25,6 @@ static class FastScanner {
 	}
 
 	int nextInt() {
-		Integar.parseInt(next());
+		Integer.parseInt(next());
 	}
 }
