@@ -23,7 +23,7 @@ public class MaxPairwiseProduct {
 			numbers[i] = scanner.nextInt();
 		}
 
-		int result = maxPairwiseProduct(numbers);
+		int result = getMaxPairwiseProduct(numbers);
 		System.out.println(result);
 	}
 
@@ -52,7 +52,7 @@ public class MaxPairwiseProduct {
         }
 
 		int nextInt() {
-			Integer.parseInt(next());
+			return Integer.parseInt(next());
 		}
 	}
 }
