@@ -9,14 +9,21 @@ using std::endl;
 long long MaxPairwiseProduct(const vector<int>& numbers) {
   long long result = 0;
   int n = numbers.size();
-  for (int i = 0; i < n-1; ++i) {
-    for (int j = i + 1; j < n; ++j) {
-      if ((long long)(numbers[i]) * numbers[j] > result) {
-        result = (long long)(numbers[i]) * numbers[j];
-      }
+  int index1 = -1;
+  for (int i = 0; i < n; ++i) {
+    if ( index1 != -1 || numbers[i] > result ) {
+      index1 = i;
     }
   }
-  return result;
+
+  int index2 = -1;
+  for (int j = 0; j < n; ++j) {
+    if (j != index1 && (-1 != index2 || numbers[j] > result) ) {
+      index2 = j;
+    }
+  }
+
+  return (long long) (numbers[index1]) * (numbers[index2]);
 }
 
 int main() {
