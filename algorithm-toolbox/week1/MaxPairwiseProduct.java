@@ -30,7 +30,7 @@ public class MaxPairwiseProduct {
 
 	static class FastScanner {
 		BufferedReader br;
-		StringTokenizner st;
+		StringTokenizer st;
 
 		public FastScanner(InputStream stream) {
 			try {
