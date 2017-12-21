@@ -21,27 +21,47 @@ long long MaxPairwiseProduct(const vector<int>& numbers) {
 
 long long MaxPairwiseProductFast(const vector<int>& numbers) {
   int n = numbers.size();
+  int index1 = -1;
+  for (int i = 0; i < n; ++i) {
+    if ( (index1 == -1) || (numbers[i] > numbers[index1]) ) {
+      index1 = i;
+    }
+  }
 
-  int max_index1 = -1;
-  for (int i = 0; i < n; ++i)
-    if ((max_index1 == -1) || (numbers[i] > numbers[max_index1]))
-      max_index1 = i;
+  int index2 = -1;
+  for (int j = 0; j < n; ++j) {
+    if ( (j != index1) && ((-1 == index2) || (numbers[j] > numbers[index2]) )) {
+      index2 = j;
+    }
+  }
 
-  int max_index2 = -1;
-  for (int j = 0; j < n; ++j)
-    if ((numbers[j] != numbers[max_index1]) && ((max_index2 == -1) || (numbers[j] > numbers[max_index2])))
-      max_index2 = j;
-
-  return ((long long)(numbers[max_index1])) * numbers[max_index2];
+  return ((long long) (numbers[index1])) * (numbers[index2]);
 }
+
+// long long MaxPairwiseProductFast(const vector<int>& numbers) {
+//   int n = numbers.size();
+
+//   int max_index1 = -1;
+//   for (int i = 0; i < n; ++i)
+//     if ((max_index1 == -1) || (numbers[i] > numbers[max_index1]))
+//       max_index1 = i;
+
+//   int max_index2 = -1;
+//   for (int j = 0; j < n; ++j)
+//     if ((j!= max_index1) && ((max_index2 == -1) || (numbers[j] > numbers[max_index2])))
+//       max_index2 = j;
+
+//   return ((long long)(numbers[max_index1])) * numbers[max_index2];
+// }
+
 
 int main() {
   while (true) {
-    int n = rand() % 10 + 2;
+    int n = rand() % 4 + 2;
     cout << n << "\n";
     vector<int> a;
     for (int i = 0; i < n; ++i) {
-      a.push_back(rand() % 100000);
+      a.push_back(rand() % 10);
     }
     for (int i = 0; i < n; ++i) {
       cout << a[i] << ' ';
@@ -53,10 +73,12 @@ int main() {
       cout << "Wrong answer: " << res1 << ' ' << res2 << "\n";
       break;
     }
-    else {
-      cout << "OK\n";
-    }
+    // else {
+    //   cout << "OK\n";
+    // }
   }
+
+  
   int n;
   cin >> n;
   vector<int> numbers(n);
