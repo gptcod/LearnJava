@@ -44,7 +44,7 @@ int gcd_naive(int a, int b) {
 //     b = rand()%50 + 3;
 //     assert(gcd_fast(a, b) == gcd_naive(a, b));
 //   }
-//   printf("OK\n");
+//   cout<<"OK"<<endl;
 
 // }
 
