@@ -33,6 +33,21 @@ int fibonacci_naive(int n) {
 }
 
 int fibonacci_fast(int n) {
+    if (n < 2) {
+        return n;
+    }
+
+    vector<int> numbers(n+1);
+    numbers[0] = 0;
+    numbers[1] = 1;
+    for (int i=2; i<=n; ++i) {
+        numbers[i] = numbers[i-1] + numbers[i-2];
+    }
+
+    return numbers[n];
+}
+
+int fibonacci_fast(int n) {
     // write your code here
     // 5.1 add by 5th step
     if (n < 2) {
@@ -51,6 +66,13 @@ int fibonacci_fast(int n) {
     //4.return
     return numbers[n];
     //5.test,don't forget the initial numbers
+}
+void test_solution() {
+    assert(fibonacci_fast(3) == 2);
+    assert(fibonacci_fast(10) == 55);
+    for (int n=0; n<20; ++n) {
+        assert(fibonacci_naive(n) == fibonacci_fast(n));
+    }
 }
 
 // void test_solution() {
