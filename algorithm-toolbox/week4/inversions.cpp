@@ -11,31 +11,39 @@ using std::endl;
 long long merge_and_get_number_of_inversions(vector<int> &a, size_t left,  size_t ave, size_t right) {
   long long number_of_inversions = 0; 
 
-  for (int i=left; i<ave; ++i) {
-    for (int j=ave; j<right; ++j) {
-      if (a[i] > a[j]) {
-        ++number_of_inversions;
-      }
+  // for (int i=left; i<ave; ++i) {
+  //   for (int j=ave; j<right; ++j) {
+  //     if (a[i] > a[j]) {
+  //       ++number_of_inversions;
+  //     }
 
-      else {
-        break;
-      }
-    }
-  }
+  //     else {
+  //       break;
+  //     }
+  //   }
+  // }
 
   vector<int> left_half(ave - left);
+  // cout<<"left_half_is:";
   for (int i =0, j=left; j<ave; ++i, ++j) {
     left_half[i] = a[j];
+    // cout<<" "<<a[j];
   }
+  // cout<<endl;
 
   vector<int> right_half(right - ave);
+  // cout<<"right_half_is:";
   for (int i =0, j=ave; j<right; ++i, ++j) {
     right_half[i] = a[j];
+    // cout<<" "<<a[j];
   }
+  // cout<<endl;
 
   int i = 0, j = 0, index = left;
   while (i < left_half.size() && j< right_half.size()) {
-    if (left_half[i] >= right_half[j]) {
+    if (left_half[i] > right_half[j]) {
+      number_of_inversions = number_of_inversions + (left_half.size() - i) * 1;
+      // cout<<"number_of_inversions:"<<number_of_inversions;
       a[index] = right_half[j];
       ++j;
       ++index;
@@ -57,11 +65,15 @@ long long merge_and_get_number_of_inversions(vector<int> &a, size_t left,  size_
   }
 
   else if (j >= right_half.size()) {
+    // number_of_inversions = number_of_inversions + (left_half.size() - i) * (right_half.size());
+    // cout<<"number_of_inversions:"<<number_of_inversions;
     while (i< left_half.size()) {
       a[index] = left_half[i];
       ++i;
       ++index;
     }
+
+
   }
   return number_of_inversions;
 }
