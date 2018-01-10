@@ -154,7 +154,7 @@ int binary_serach_end_max_lower_index(vector<Segment> segments, int target) {
   while (l<=r && mid>=1) {
     if (segments[mid].end >= target && segments[mid-1].end< target) {
       // cout<<"w31"<<endl;
-      return mid;
+      return mid-l;
     }
 
     else if (segments[mid].end >= target && segments[mid-1].end >=target) {
